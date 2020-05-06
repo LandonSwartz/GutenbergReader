@@ -13,6 +13,7 @@ class File
 		char *filename;
 
 		void setSize();
+		void rewindFile();
 	public:
 		File() { };
 		File(char * filename);

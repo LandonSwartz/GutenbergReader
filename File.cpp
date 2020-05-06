@@ -44,7 +44,14 @@ bool File::isOpen()
 
 int File::getSize()
 {
-	//get size of file
+	fseek(_file, 0L, SEEK_END);
+	size = ftell(_file);
+	rewindFile();
+}
+
+void File::rewindFile()
+{
+	rewind(_file);
 }
 
 void File::writeToFile(string msg)
