@@ -17,11 +17,14 @@ class File
 	public:
 		File() { };
 		File(char * filename);
+		File(string filename);
 		~File();
 
 		void openFile(char * filename);
+		void openFile(string filename);
 		void closeFile();
 		bool isOpen();
 		int getSize();
 		void writeToFile(string msg);
+		void writeToFile(char *msg);
 };

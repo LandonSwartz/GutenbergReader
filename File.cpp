@@ -4,12 +4,19 @@
 
 void File::setSize()
 {
-	//set size of file
+	fseek(_file, 0L, SEEK_END);
+	size = ftell(_file);
+	rewindFile();
 }
 
 File::File(char * filename)
 {
 	_file = fopen(filename, "w+");
+}
+
+File::File(string filename)
+{
+	_file = fopen(filename.c_str(), "w+");
 }
 
 File::~File()
@@ -23,6 +30,11 @@ File::~File()
 void File::openFile(char * filename)
 {
 	_file = fopen(filename, "w+");
+}
+
+void File::openFile(string filename)
+{
+	_file = fopen(filename.c_str(), "w+");
 }
 
 void File::closeFile()
@@ -44,9 +56,7 @@ bool File::isOpen()
 
 int File::getSize()
 {
-	fseek(_file, 0L, SEEK_END);
-	size = ftell(_file);
-	rewindFile();
+	return size;
 }
 
 void File::rewindFile()
@@ -56,5 +66,10 @@ void File::rewindFile()
 
 void File::writeToFile(string msg)
 {
-	//write to file
+	fputs(msg.c_str(), _file);
 }
+
+void File::writeToFile(char * msg)
+{
+	fputs(msg, _file);
+}	
