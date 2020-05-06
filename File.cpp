@@ -1,44 +1,53 @@
 //implemention of file class
 
+#include"File.h"
+
 void File::setSize()
 {
-	//find size of file
+	//set size of file
 }
 
-File::File(string filename)
+File::File(char * filename)
 {
-	file = fopen(filename, "w+");
+	_file = fopen(filename, "w+");
 }
 
 File::~File()
 {
-	if(file.isOpen())
+	if(this->isOpen())
 	{
-		fclose(file);
+		fclose(_file);
 	}
 }
 
-File::openFile(string filename);
+void File::openFile(char * filename)
 {
-	file = fopen(filename, "w+");
+	_file = fopen(filename, "w+");
 }
 
-File::closeFile()
+void File::closeFile()
 {
-	fclose(file);
+	fclose(_file);
 }
 
-bool isOpen() const
+bool File::isOpen() 
 {
-	return file.isOpen();
+	if(_file == NULL)
+	{
+		//file is not open
+		return 0;
+	}
+	else
+		return 1; 
+		//file is open
 }
 
-File::getSize()
+int File::getSize()
 {
 	//get size of file
 }
 
-File::writeToFile(string msg)
+void File::writeToFile(string msg)
 {
 	//write to file
 }
