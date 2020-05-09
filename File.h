@@ -1,7 +1,9 @@
 //container class for FILE
 
+#include"Exception.h"
 #include<cstdio>
 #include<string>
+
 
 using namespace std;
 
@@ -10,9 +12,10 @@ class File
 	private:
 		FILE *_file; //file pointer
 		int size; //size of file
-		char *filename;
+		string filename; //name of file
 
 		void setSize();
+		//rewind file to beginning
 		void rewindFile();
 	public:
 		File() { };

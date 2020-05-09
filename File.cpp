@@ -12,11 +12,19 @@ void File::setSize()
 File::File(char * filename)
 {
 	_file = fopen(filename, "w+");
+	if(!_file)
+	{
+		throw file_open_error();
+	}
 }
 
 File::File(string filename)
 {
 	_file = fopen(filename.c_str(), "w+");
+	if(!_file)
+	{
+		throw file_open_error();
+	}
 }
 
 File::~File()
